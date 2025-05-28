@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur Sleep - Customer Lifetime Coverage Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Arthur Sleep</div>
+        <div class="header-stats">
+            <div class="stat-box">
+                <div class="stat-value" id="totalCustomers">847</div>
+                <div class="stat-label">Total Customers</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="avgCoverage">42%</div>
+                <div class="stat-label">Avg Coverage</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="completeSets">71</div>
+                <div class="stat-label">Complete Sets</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <h2>Filter Customers</h2>
+            
+            <input type="text" class="search-box" placeholder="Search by name or email..." id="searchInput">
+            
+            <div class="filter-section">
+                <div class="filter-label">Coverage Level</div>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="filter-checkbox" value="0-20" checked>
+                        <span>Low Coverage (0-20%)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="filter-checkbox" value="20-40" checked>
+                        <span>Partial Coverage (20-40%)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="filter-checkbox" value="40-80" checked>
+                        <span>Good Coverage (40-80%)</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="filter-checkbox" value="80-100" checked>
+                        <span>Excellent Coverage (80-100%)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-label">Missing Categories</div>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" class="filter-checkbox category-filter" value="business">
+                        <span>Missing Business</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="filter-checkbox category-filter" value="casual">
+                        <span>Missing Weekend</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="filter-checkbox category-filter" value="evening">
+                        <span>Missing Evening</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" class="filter-checkbox category-filter" value="travel">
+                        <span>Missing Travel</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <h3>Business Coverage</h3>
+                    <div class="value">59%</div>
+                    <div class="sub-value">499 customers</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Weekend Coverage</h3>
+                    <div class="value">68%</div>
+                    <div class="sub-value">576 customers</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Evening Coverage</h3>
+                    <div class="value">25%</div>
+                    <div class="sub-value">212 customers</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Travel Coverage</h3>
+                    <div class="value">20%</div>
+                    <div class="sub-value">169 customers</div>
+                </div>
+            </div>
+
+            <div class="coverage-grid" id="customerGrid">
+                <!-- Customer cards will be generated here -->
+            </div>
+        </div>
+    </div>
+
+    <button class="export-btn" onclick="exportData()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Export Marketing List
+    </button>
+
+    <script src="js/data.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

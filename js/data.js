@@ -137,81 +137,24 @@ function calculateTotalSpend(orders) {
 // Initialize when page loads
 let customers = [];
 document.addEventListener('DOMContentLoaded', async function() {
+    document.addEventListener('DOMContentLoaded', async function() {
     // Show loading state
-    document.getElementById('customerGrid').innerHTML = '<p>Loading customers from Shopify...</p>';
+    document.getElementById('customerGrid').innerHTML = '<p>Loading customers...</p>';
     
-    // Load customers
-    customers = await loadShopifyCustomers();
+    // For now, use sample data to test search
+    generateSampleCustomers(50);
+    
+    // Make sure customers array is populated
+    console.log(`Loaded ${customers.length} customers`);
     
     // Render the dashboard
     renderCustomers();
-});
-Option B: Use a Server/Cloud Function (More Powerful)
-For full access to customer data, you'll need a server. Here's a simple approach using Netlify Functions:
-
-Create a new file netlify/functions/get-customers.js:
-
-javascriptconst fetch = require('node-fetch');
-
-exports.handler = async (event, context) => {
-    const SHOPIFY_API_KEY = process.env.SHOPIFY_API_KEY;
-    const SHOPIFY_API_PASSWORD = process.env.SHOPIFY_API_PASSWORD;
-    const SHOPIFY_DOMAIN = process.env.SHOPIFY_DOMAIN;
-
-    try {
-        // Fetch customers
-        const customersResponse = await fetch(
-            `https://${SHOPIFY_API_KEY}:${SHOPIFY_API_PASSWORD}@${SHOPIFY_DOMAIN}/admin/api/2024-01/customers.json?limit=250`,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }
-        );
-        
-        const customersData = await customersResponse.json();
-        
-        // Fetch orders for each customer
-        const customersWithOrders = await Promise.all(
-            customersData.customers.map(async (customer) => {
-                const ordersResponse = await fetch(
-                    `https://${SHOPIFY_API_KEY}:${SHOPIFY_API_PASSWORD}@${SHOPIFY_DOMAIN}/admin/api/2024-01/customers/${customer.id}/orders.json`,
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        }
-                    }
-                );
-                
-                const ordersData = await ordersResponse.json();
-                
-                // Process orders to determine coverage
-                const coverage = processOrdersForCoverage(ordersData.orders);
-                
-                return {
-                    id: customer.id,
-                    name: `${customer.first_name} ${customer.last_name}`,
-                    email: customer.email,
-                    totalSpend: customer.total_spent,
-                    lastPurchase: customer.last_order_date,
-                    coverage: coverage
-                };
-            })
-        );
-
-        return {
-            statusCode: 200,
-            body: JSON.stringify(customersWithOrders)
-        };
-    } catch (error) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ error: error.message })
-        };
+    
+    // Make sure search is connected
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        console.log('Search box found and connected');
+    } else {
+        console.error('Search box not found!');
     }
-};
-
-function processOrdersForCoverage(orders) {
-    // Similar logic to calculate coverage
-    // Implementation here...
-}
+});

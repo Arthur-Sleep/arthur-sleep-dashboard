@@ -1,6 +1,6 @@
 // Shopify Storefront API Configuration
-const SHOPIFY_DOMAIN = 'your-store.myshopify.com'; // Replace with your store
-const STOREFRONT_ACCESS_TOKEN = 'YOUR_STOREFRONT_ACCESS_TOKEN'; // From Shopify
+const SHOPIFY_DOMAIN = 'http://asleeptrading-co-uk.myshopify.com'; //
+const STOREFRONT_ACCESS_TOKEN = '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&ie=UTF-8&oe=UTF-8'; //
 
 // Product to Category Mapping
 const productCategoryMap = {

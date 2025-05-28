@@ -1,3 +1,15 @@
+/* Arthur Sleep Brand Design System */
+:root {
+    /* Brand Colors from your presentation */
+    --arthur-orange: #c05621;
+    --arthur-orange-dark: #a04518;
+    --arthur-orange-light: #d4702f;
+    --arthur-charcoal: #2c2c2c;
+    --arthur-beige: #f5f3f0;
+    --arthur-white: #ffffff;
+    --arthur-black: #1a1a1a;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,23 +18,27 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #f5f3f0;
-    color: #2c2c2c;
+    background-color: var(--arthur-beige);
+    color: var(--arthur-charcoal);
 }
 
+/* Header with dark background like your presentation */
 .header {
-    background-color: #fff;
+    background-color: var(--arthur-charcoal);
     padding: 20px 40px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Elegant italicized logo */
 .logo {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 300;
     font-style: italic;
+    color: var(--arthur-white);
+    letter-spacing: 1px;
 }
 
 .header-stats {
@@ -37,12 +53,12 @@ body {
 .stat-value {
     font-size: 32px;
     font-weight: 600;
-    color: #c05621;
+    color: var(--arthur-orange);
 }
 
 .stat-label {
     font-size: 12px;
-    color: #666;
+    color: rgba(255,255,255,0.7);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -54,7 +70,7 @@ body {
 
 .sidebar {
     width: 300px;
-    background-color: #fff;
+    background-color: var(--arthur-white);
     padding: 30px;
     box-shadow: 2px 0 10px rgba(0,0,0,0.05);
     overflow-y: auto;
@@ -63,7 +79,8 @@ body {
 .sidebar h2 {
     font-size: 18px;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--arthur-charcoal);
+    font-weight: 600;
 }
 
 .filter-section {
@@ -75,7 +92,7 @@ body {
     font-weight: 500;
     margin-bottom: 10px;
     display: block;
-    color: #555;
+    color: var(--arthur-charcoal);
 }
 
 .filter-options {
@@ -95,13 +112,13 @@ body {
 }
 
 .filter-option:hover {
-    background-color: #f5f3f0;
+    background-color: var(--arthur-beige);
 }
 
 .filter-checkbox {
     width: 18px;
     height: 18px;
-    accent-color: #c05621;
+    accent-color: var(--arthur-orange);
 }
 
 .search-box {
@@ -113,10 +130,16 @@ body {
     margin-bottom: 20px;
 }
 
+.search-box:focus {
+    outline: none;
+    border-color: var(--arthur-orange);
+}
+
 .content {
     flex: 1;
     padding: 30px;
     overflow-y: auto;
+    background-color: var(--arthur-beige);
 }
 
 .coverage-grid {
@@ -127,7 +150,7 @@ body {
 }
 
 .customer-card {
-    background-color: #fff;
+    background-color: var(--arthur-white);
     border-radius: 12px;
     padding: 24px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -149,19 +172,19 @@ body {
 .customer-name {
     font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: var(--arthur-charcoal);
 }
 
 .customer-info {
     font-size: 12px;
-    color: #888;
+    color: #666;
     margin-top: 4px;
 }
 
 .coverage-percentage {
     font-size: 24px;
     font-weight: 700;
-    color: #c05621;
+    color: var(--arthur-orange);
 }
 
 .coverage-label {
@@ -191,12 +214,12 @@ body {
 }
 
 .shoe-box.owned {
-    background-color: #c05621;
+    background-color: var(--arthur-orange);
     color: white;
 }
 
 .shoe-box.not-owned {
-    background-color: #f5f3f0;
+    background-color: var(--arthur-beige);
     border: 2px dashed #ddd;
     color: #aaa;
 }
@@ -233,17 +256,18 @@ body {
 }
 
 .btn-primary {
-    background-color: #c05621;
+    background-color: var(--arthur-orange);
     color: white;
 }
 
 .btn-primary:hover {
-    background-color: #a04518;
+    background-color: var(--arthur-orange-dark);
+    transform: translateY(-1px);
 }
 
 .btn-secondary {
-    background-color: #f5f3f0;
-    color: #333;
+    background-color: var(--arthur-beige);
+    color: var(--arthur-charcoal);
 }
 
 .btn-secondary:hover {
@@ -258,7 +282,7 @@ body {
 }
 
 .stat-card {
-    background-color: #fff;
+    background-color: var(--arthur-white);
     padding: 24px;
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -275,7 +299,7 @@ body {
 .stat-card .value {
     font-size: 32px;
     font-weight: 700;
-    color: #c05621;
+    color: var(--arthur-orange);
 }
 
 .stat-card .sub-value {
@@ -284,12 +308,31 @@ body {
     margin-top: 4px;
 }
 
+/* Upload button styled to match brand */
+label[for="csvUpload"] {
+    display: block;
+    padding: 12px;
+    background-color: var(--arthur-orange);
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    margin-bottom: 20px;
+}
+
+label[for="csvUpload"]:hover {
+    background-color: var(--arthur-orange-dark);
+}
+
+/* Export button with dark styling like presentation */
 .export-btn {
     position: fixed;
     bottom: 30px;
     right: 30px;
     padding: 16px 24px;
-    background-color: #333;
+    background-color: var(--arthur-charcoal);
     color: white;
     border: none;
     border-radius: 30px;
@@ -304,7 +347,7 @@ body {
 }
 
 .export-btn:hover {
-    background-color: #222;
+    background-color: var(--arthur-black);
     transform: translateY(-2px);
     box-shadow: 0 6px 30px rgba(0,0,0,0.3);
 }
@@ -314,7 +357,7 @@ body {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #333;
+    background-color: var(--arthur-charcoal);
     color: white;
     padding: 6px 12px;
     border-radius: 4px;
@@ -333,7 +376,7 @@ body {
 .coverage-progress {
     width: 100%;
     height: 8px;
-    background-color: #f5f3f0;
+    background-color: var(--arthur-beige);
     border-radius: 4px;
     margin: 12px 0;
     overflow: hidden;
@@ -341,7 +384,25 @@ body {
 
 .coverage-progress-bar {
     height: 100%;
-    background-color: #c05621;
+    background-color: var(--arthur-orange);
     border-radius: 4px;
     transition: width 0.3s ease;
+}
+
+/* Professional touches */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+.content {
+    scroll-behavior: smooth;
+}
+
+/* Better focus states */
+button:focus,
+input:focus {
+    outline: 2px solid var(--arthur-orange);
+    outline-offset: 2px;
 }

@@ -118,5 +118,26 @@
     <script src="js/data.js"></script>
     <script src="js/filters.js"></script>
     <script src="js/app.js"></script>
+    <script>
+function handleCSVUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const csvText = e.target.result;
+            processShopifyCSV(csvText);
+            alert(`Loaded ${customers.length} customers from CSV!`);
+        };
+        reader.readAsText(file);
+    }
+}
+</script>
 </body>
 </html>
+<h2>Filter Customers</h2>
+<div style="margin-bottom: 20px;">
+    <label for="csvUpload" style="display: block; padding: 10px; background-color: #c05621; color: white; text-align: center; border-radius: 6px; cursor: pointer;">
+        Upload Customer CSV
+    </label>
+    <input type="file" id="csvUpload" accept=".csv" style="display: none;" onchange="handleCSVUpload(event)">
+</div>
